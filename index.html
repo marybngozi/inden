@@ -4,16 +4,178 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css" />
     <title>Inden</title>
   </head>
   <body>
     <header>
-      <img src="./assets/images/dp.png" alt="user profile pics" />
-      <h6>Good Morning Silm!</h6>
+      <div>
+        <img src="./assets/images/dp.png" alt="user profile pics" />
+      </div>
+      <h4>Good Morning Silm!</h4>
     </header>
-    <main></main>
-    <footer></footer>
+
+    <main>
+      <!-- top section -->
+      <section id="top">
+        <h2>Schedule</h2>
+
+        <button>Reconfigure Services</button>
+      </section>
+
+      <!-- cards section -->
+      <section id="cards">
+        <div id="greenCard" class="card-pill">
+          <div>
+            <p>
+              Your account is inactive. <span>15% off</span> offer until June
+              23.
+            </p>
+          </div>
+
+          <button>
+            <p>N75,000</p>
+            <p>Pay N62,800</p>
+          </button>
+        </div>
+
+        <div id="yellowCard" class="card-pill">
+          <div>
+            <p>View your meals for the week.</p>
+          </div>
+
+          <button>
+            <span>Check 'em</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- box section -->
+      <section id="box">
+        <h5>Getting Started</h5>
+        <p>Let's answer any questions you have left!</p>
+
+        <div>
+          <div>
+            <div class="icon-box icon-box-1">
+              <img src="./assets/icons/call.png" alt="phone icon" />
+            </div>
+            <p>Set up a call with your gardener</p>
+            <button>
+              <span class="text-purple">Do it</span>
+              <img src="./assets/icons/arrow-p.png" alt="arrow icon" />
+            </button>
+          </div>
+
+          <div>
+            <div class="icon-box icon-box-2">
+              <img src="./assets/icons/play.png" alt="video icon" />
+            </div>
+            <p>Lose yourself to this videos</p>
+            <button>
+              <span class="text-orange">Play</span>
+              <img src="./assets/icons/arrow-o.png" alt="arrow icon" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- timeline section -->
+      <section id="timeline">
+        <div>
+          <h5>Tomorrow</h5>
+
+          <div class="event">
+            <div class="event-time">
+              <p>9 - 10am</p>
+            </div>
+            <div class="event-action ea-1">
+              <p>Your cleaner is coming in to give your apartment the looks.</p>
+            </div>
+          </div>
+
+          <div class="event">
+            <div class="event-time">
+              <p>3 - 5pm</p>
+            </div>
+            <div class="event-action ea-2">
+              <p>Winter? We're getting your AC fixed</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h5>Friday, July 27</h5>
+
+          <div class="event">
+            <div class="event-time">
+              <p>9 - 10am</p>
+            </div>
+            <div class="event-action ea-1">
+              <p>Your cleaner came in to give your apartment the looks.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- todayMeals section -->
+      <section id="todayMeals" class="close">
+        <div class="modal-body">
+          <div>
+            <div>
+              <h4>Today's Meals</h4>
+            </div>
+            <button id="closeBtn">
+              <img src="./assets/icons/close.png" alt="close icon" />
+            </button>
+          </div>
+
+          <ul id="mealList">
+            <!-- INJECT THE LIST FROM JavaScript-->
+            <!-- <li class="food-list">
+              <img src="./assets/images/pap.png" alt="Akara and pap" />
+              <div>
+                <h5>Akara & Pap</h5>
+                <p>Carbohydrate</p>
+              </div>
+            </li> -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- todayMeals section -->
+      <section id="mealImg" class="close">
+        <div>
+          <img src="./assets/images/showfood.png" alt="akra food" />
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <button>
+        <img src="./assets/icons/calendar.png" alt="calender" />
+        <p>Schedule</p>
+      </button>
+      <button>
+        <img src="./assets/icons/history.png" alt="calender" />
+        <p>History</p>
+      </button>
+      <button>
+        <img src="./assets/icons/bell.png" alt="calender" />
+        <p>Notifications</p>
+      </button>
+      <button>
+        <img src="./assets/icons/chat.png" alt="calender" />
+        <p>Chat</p>
+      </button>
+    </footer>
+
     <script src="main.js"></script>
   </body>
 </html>
