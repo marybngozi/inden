@@ -34,9 +34,12 @@ const Meals = [
 // get DOM elements
 const todayMealsEl = document.querySelector("#todayMeals");
 const mealUl = document.querySelector("#mealList");
-const openBtn = document.querySelector("#yellowCard");
+const openBtn = document.querySelector("#openBtn");
 const closeBtn = document.querySelector("#closeBtn");
 const mealImgEl = document.querySelector("#mealImg");
+const mealImgDivEl = document.querySelector("#mealImg > div");
+const yCardEl = document.querySelector("#yellowCard");
+const mBody = document.querySelector(".modal-body");
 
 Meals.forEach((meal) => {
   const liEl = `
@@ -53,27 +56,48 @@ Meals.forEach((meal) => {
 });
 
 openBtn.addEventListener("click", (e) => {
-  todayMealsEl.classList.remove("close");
-  todayMealsEl.classList.add("open");
+  todayMealsEl.classList.remove("hidden");
+  todayMealsEl.classList.remove("fade");
+  yCardEl.classList.add("blow-out");
+  mBody.classList.remove("hidden");
+
+  setTimeout(() => {
+    todayMealsEl.classList.remove("close");
+    todayMealsEl.classList.add("open");
+    mBody.classList.add("mt-big");
+  }, 100);
 });
 
 closeBtn.addEventListener("click", (e) => {
-  todayMealsEl.classList.remove("open");
-  todayMealsEl.classList.add("close");
+  yCardEl.classList.remove("blow-out");
+  mBody.classList.add("hidden");
+  todayMealsEl.classList.add("fade");
+
+  setTimeout(function () {
+    todayMealsEl.classList.remove("open");
+    todayMealsEl.classList.add("close");
+    mBody.classList.remove("mt-big");
+  }, 700);
 });
 
 const liElements = document.querySelectorAll(".food-list");
 
 liElements.forEach((el) => {
   el.addEventListener("click", (e) => {
-    mealImgEl.classList.remove("close");
-    mealImgEl.classList.add("open");
+    mealImgEl.classList.remove("closeImg");
+    mealImgEl.classList.add("openImg");
+    mealImgDivEl.classList.remove("hiddenImg");
   });
 });
 
 mealImgEl.addEventListener("click", (e) => {
   if (e.target.matches("#mealImg")) {
-    mealImgEl.classList.remove("open");
-    mealImgEl.classList.add("close");
+    mealImgEl.classList.remove("openImg");
+    // mealImgEl.classList.add("hiddenImg");
+    mealImgDivEl.classList.add("hiddenImg");
+
+    setTimeout(function () {
+      mealImgEl.classList.add("closeImg");
+    }, 1000);
   }
 });

@@ -29,6 +29,8 @@ body {
   width: 100%;
   max-width: 425px;
   margin: 0 auto;
+  height: 100vh;
+  overflow-y: hidden;
 }
 header {
   display: flex;
@@ -54,7 +56,7 @@ header > h4 {
 }
 main {
   overflow-y: scroll;
-  height: calc(100vh - 130px);
+  height: calc(98vh - 130px);
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
@@ -68,7 +70,7 @@ section#top {
   margin-top: 25px;
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 }
 #top h2 {
   font-size: var(--fs-4);
@@ -128,6 +130,11 @@ section#cards {
 #yellowCard {
   cursor: pointer;
   margin-top: 20px;
+}
+.blow-out {
+  animation-name: blow;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
 }
 #yellowCard > div {
   background: #f9f5e1;
@@ -257,7 +264,7 @@ footer {
   height: 74px;
   position: absolute;
   background-color: rgba(244, 244, 244, 0.75);
-  bottom: 0vh;
+  bottom: 0;
   left: 0;
   right: 0;
   display: flex;
@@ -282,28 +289,40 @@ footer button p {
 
 /* SECTION - TODAYMEALS */
 #todayMeals {
+  z-index: 2;
+  position: absolute;
+}
+.close {
+  display: none !important;
+}
+.hidden {
+  animation-name: shrink;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+.fade {
+  background-color: transparent;
+  transition: background-color 1.3s;
+}
+.open {
+  animation-name: grow;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  background-color: rgba(0, 0, 0, 0.9);
   position: absolute;
   bottom: 0;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 2;
-  background-color: rgba(0, 0, 0, 0.9);
-}
-.close {
-  animation: shrink 1.3s;
-  visibility: hidden;
-  /* display: none !important; */
-}
-.open {
-  animation: grow 1s;
-  display: block;
+  transition: position 1s;
 }
 .modal-body {
-  margin-top: 130px;
   height: calc(100vh - 130px);
   border-radius: 20px 20px 0 0;
   background-color: #fff;
+}
+.mt-big {
+  margin-top: 130px;
 }
 .modal-body > div {
   height: 87px;
@@ -360,18 +379,29 @@ footer button p {
 
 /* SECTION - MEALIMG */
 #mealImg {
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closeImg {
+  display: none !important;
+}
+.hiddenImg {
+  animation-name: shrink;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in;
+}
+.openImg {
+  animation: growIm 1.5s;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: block;
   position: absolute;
   bottom: 0;
   top: 0;
   right: 0;
   left: 0;
-  z-index: 4;
-  background-color: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-
 #mealImg img {
   width: 100%;
   height: 368px;
@@ -381,35 +411,55 @@ footer button p {
 @keyframes grow {
   0% {
     transform: scaleY(0);
+    transform-origin: -50px 350px;
+    opacity: 0.5;
     background-color: transparent;
-    /* background-color: rgba(163, 158, 158, 0.003); */
-    opacity: 0.5;
-    /* padding: 0 28px; */
   }
-  /* 50% {
-    transform: scaleY(0.5);
-    background-color: rgba(107, 104, 104, 0.003);
-    opacity: 0.5;
-    width: auto;
-  } */
+  50% {
+    background-color: transparent;
+  }
   100% {
     transform: scaleY(1);
-    background-color: rgba(0, 0, 0, 0.9);
+    transform-origin: 50px 350px;
+    background-color: rgba(0, 0, 0, 0.5);
     opacity: 1;
-    /* padding: 0; */
+  }
+}
+@keyframes growIm {
+  0% {
+    transform: scaleY(0);
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    transform: scaleY(1);
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+@keyframes blow {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    border-radius: 6px;
+    transform: translateY(-20px) scaleX(1.03);
+  }
+  100% {
+    border-radius: 6px;
+    transform: translateY(0px) scaleX(1);
   }
 }
 @keyframes shrink {
-  from {
+  0% {
     transform: scaleY(1);
-    /* background-color: red; */
+    transform-origin: 50px 350px;
+    opacity: 1;
+    /* background-color: rgba(0, 0, 0, 0.9); */
   }
-  to {
+  100% {
     transform: scaleY(0);
+    transform-origin: -50px 350px;
+    opacity: 0;
+    /* background-color: rgba(0, 0, 0, 0.2); */
     z-index: -1;
-    /* border-radius: 0px; */
   }
-  /* 100% {
-    transform: scale(1);
-  } */
 }
